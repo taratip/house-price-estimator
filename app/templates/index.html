@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Estimater
+{% endblock %}
+
+{% block app_content %}
+  <div class="container">
+    <div class="row extra-margin">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="text-center based-color">Enter House Features</h1>
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputSqFt">Square Foot</label>
+                  <input type="range" class="form-control-range" id="inputSqFt">
+                </div> <!-- End div col -->
+                <div class="form-group col-md-6">
+                  <label for="inputLot">Lot Size</label>
+                  <select id="inputLot" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+              </div> <!-- End div row -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputBed">Beds</label>
+                  <select id="inputBed" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+                <div class="form-group col-md-6">
+                  <label for="inputBath">Baths</label>
+                  <select id="inputBath" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+              </div> <!-- End div row -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputRooms">No. Rooms</label>
+                  <select id="inputRooms" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+                <div class="form-group col-md-6">
+                  <label for="inputYear">Year Built</label>
+                  <input type="text" class="form-control" id="inputYear">
+                </div> <!-- End div col -->
+              </div> <!-- End div row -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputPropType">Property Type</label>
+                  <select id="inputPropType" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+                <div class="form-group col-md-6">
+                  <label for="inputNeighbor">Neighborhood</label>
+                  <select id="inputNeighbor" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> <!-- End div col -->
+              </div> <!-- End div row -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary based-background">Submit</button>
+                <a href="#" class="based-color">Reset</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

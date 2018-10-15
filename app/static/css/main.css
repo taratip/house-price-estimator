@@ -1,0 +1,58 @@
+html, body {
+  font-family: 'Raleway', sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.fill {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div#bg {
+  background: linear-gradient(rgba(20,20,20,0.5), rgba(20,20,20,0.5)), url('../imgs/sayan-nath-351077-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-color: blue; */
+  min-width: 100%;
+  height: 100vh;
+}
+
+.xlarge-font {
+  font-size: 60px;
+}
+
+.white {
+  color: white;
+}
+
+.based-background {
+  background-color: #326373;
+  border-color: #326373;
+}
+
+.based-color {
+  color: #326373;
+}
+
+.darker-background {
+  background-color: #1B4C5C;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #1B4C5C;
+  border-color: #1B4C5C;
+}
+
+.extra-margin {
+  margin-top: 50px;
+}
+
+a.based-color:hover {
+    color: #E39774;
+    text-decoration: none;
+}
