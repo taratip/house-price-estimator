@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from 'bootstrap/wtf.html' import form_field %}
+
+{% block title %}
+  Result
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row extra-margin">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title based-color">Est. Price:<span class="orange"> $0.92 M</span></h4>
+            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Backbay</p>
+            <p class="card-text">Finished Squared Ft: {{ features.finished_sq_ft }}</p>
+            <p class="card-text">Lot Size: {{ features.lot_size }}</p>
+            <p class="card-text">Total Rooms: 6</p>
+            <p class="card-text">Year Built: 2000</p>
+          </div>
+            <ul class="flex-container space-evenly light-background">
+              <li class="flex-item"><i class="fas fa-bed"></i> 3</li>
+              <li class="flex-item"><i class="fas fa-bath"></i> 3</li>
+              <li class="flex-item"><i class="fas fa-home"></i> Condo</li>
+            </ul>
+        </div> <!-- End div card -->
+      </div> <!-- End div col-4 -->
+      <div class="col-md-8">
+
+      </div> <!-- End div col-8 -->
+    </div> <!-- End div row -->
+  </div> <!-- End div for container -->
+{% endblock %}

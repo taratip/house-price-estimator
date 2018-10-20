@@ -3,33 +3,11 @@
 {% block app_content %}
   <div class="container-fluid fill">
     <div id="bg">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="{{ url_for('index') }}">House Prices Estimator</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('index') }}">Estimate <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}">Signin</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div> <!-- end div for navbar -->
-      <div class="container">
-        <div class="row">
-          <div class="col-8 mx-auto">
-            <p class="xlarge-font white">PREDICT HOUSE PRICE</p>
-            <a href="{{ url_for('index') }}" class="btn btn-primary based-background">Let's Start!</a>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-8 mx-auto my-auto">
+            <p class="xlarge-font white">HOUSE PRICE ESTIMATOR</p>
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg based-background"><i class="fas fa-caret-right"></i> Let's Start!</a>
           </div>
         </div>
       </div>

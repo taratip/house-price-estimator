@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 
 .fill {
@@ -11,7 +12,7 @@ html, body {
 }
 
 div#bg {
-  background: linear-gradient(rgba(20,20,20,0.5), rgba(20,20,20,0.5)), url('../imgs/sayan-nath-351077-unsplash.jpg') no-repeat center center fixed;
+  background: linear-gradient(rgba(30,30,30,0.5), rgba(30,30,30,0.5)), url('../imgs/sayan-nath-351077-unsplash_1440.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -25,8 +26,24 @@ div#bg {
   font-size: 60px;
 }
 
+.large-font {
+  font-size: 32px;
+}
+
+.light-weight {
+  font-weight: 100;
+}
+
 .white {
   color: white;
+}
+
+.light-grey {
+  color: #D3D3D3;
+}
+
+.orange {
+  color: #BF772D;
 }
 
 .based-background {
@@ -34,25 +51,70 @@ div#bg {
   border-color: #326373;
 }
 
-.based-color {
-  color: #326373;
-}
-
-.darker-background {
-  background-color: #1B4C5C;
+.light-background {
+  background-color: #80A1AD;
 }
 
 .btn-primary:hover {
   color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+  background: #1B4C5C!important;
+  outline: none;
+  box-shadow: none !important;
+  border-color: #1B4C5C!important;;
+}
+
+button.btn-custom {
+  background-color: #326373;
+  color: #fff;
+}
+
+button.btn-custom:hover {
   background-color: #1B4C5C;
-  border-color: #1B4C5C;
 }
 
 .extra-margin {
   margin-top: 50px;
 }
 
-a.based-color:hover {
-    color: #E39774;
-    text-decoration: none;
+.form-control-range {
+  display: inline;
+}
+
+.w-80 {
+  width: 80%!important;
+}
+
+.padding {
+  padding: 25px;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex-item {
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
 }
