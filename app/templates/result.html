@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
+  <div class="container-fluid">
     <div class="row extra-margin">
       <div class="col-md-4">
         <div class="card">
@@ -15,18 +15,48 @@
             <p class="card-text"><i class="fas fa-map-marker-alt"></i> Backbay</p>
             <p class="card-text">Finished Squared Ft: {{ features.finished_sq_ft }}</p>
             <p class="card-text">Lot Size: {{ features.lot_size }}</p>
-            <p class="card-text">Total Rooms: 6</p>
-            <p class="card-text">Year Built: 2000</p>
-          </div>
-            <ul class="flex-container space-evenly light-background">
-              <li class="flex-item"><i class="fas fa-bed"></i> 3</li>
-              <li class="flex-item"><i class="fas fa-bath"></i> 3</li>
-              <li class="flex-item"><i class="fas fa-home"></i> Condo</li>
-            </ul>
+            <p class="card-text">Total Rooms: {{ features.total_room }}</p>
+            <p class="card-text">Year Built: {{ features.built_year }}</p>
+          </div> <!-- End div card body -->
+          <ul class="flex-container space-evenly light-background">
+            <li class="flex-item"><i class="fas fa-bed"></i> {{ features.bedroom }}</li>
+            <li class="flex-item"><i class="fas fa-bath"></i> {{ features.bathroom }}</li>
+            <li class="flex-item"><i class="fas fa-home"></i> {{ features.property_type }}</li>
+          </ul>
         </div> <!-- End div card -->
       </div> <!-- End div col-4 -->
       <div class="col-md-8">
-
+        <h3>Previously sold houses with similar features</h3>
+        <div class="card-deck extra-margin">
+          <div class="card">
+            <img src="http://source.unsplash.com/daily" alt="Home Image" class="card-img-top" width="287" height="250">
+            <div class="card-img-overlay">
+              <span class="card-text darker-background small-padding"><small>Sold on 2015-12-16</small></span>
+            </div>
+            <div class="card-body">
+              <div class="card-title"><i class="fas fa-map-marker-alt"></i> Address </div>
+              <div class="sub-title">Sold price: $1.1 M</div>
+            </div> <!-- End div card body -->
+          </div> <!-- End div card -->
+          <div class="card">
+            <div class="card-header">Address</div>
+            <img src="http://source.unsplash.com/daily" alt="Home Image" class="card-img-top" width="287" height="200">
+            <div class="card-body">
+              <div class="card-title"><i class="fas fa-map-marker-alt"></i> Chinatown</div>
+              <div class="sub-title">Sold price: $1.1 M</div>
+              <div class="card-text">Sold date: 2015-12-16</div>
+            </div> <!-- End div card body -->
+          </div> <!-- End div card -->
+          <div class="card">
+            <div class="card-header">Address</div>
+            <img src="http://source.unsplash.com/daily" alt="Home Image" class="card-img-top" width="287" height="200">
+            <div class="card-body">
+              <div class="card-title"><i class="fas fa-map-marker-alt"></i> Back Bay</div>
+              <div class="sub-title">Sold price: $1.1 M</div>
+              <div class="card-text">Sold date: 2015-12-16</div>
+            </div> <!-- End div card body -->
+          </div> <!-- End div card -->
+        </div> <!-- End div card deck -->
       </div> <!-- End div col-8 -->
     </div> <!-- End div row -->
   </div> <!-- End div for container -->

@@ -51,8 +51,17 @@ div#bg {
   border-color: #326373;
 }
 
+.based-color {
+  color: #326373;
+}
+
 .light-background {
   background-color: #80A1AD;
+}
+
+.darker-background {
+  background-color: #083240;
+  color: #fff;
 }
 
 .btn-primary:hover {
@@ -69,12 +78,12 @@ div#bg {
   border-color: #1B4C5C!important;;
 }
 
-button.btn-custom {
+input#submit.btn.btn-block.btn-custom {
   background-color: #326373;
   color: #fff;
 }
 
-button.btn-custom:hover {
+input#submit.btn.btn-block.btn-custom:hover {
   background-color: #1B4C5C;
 }
 
@@ -92,6 +101,10 @@ button.btn-custom:hover {
 
 .padding {
   padding: 25px;
+}
+
+.small-padding {
+  padding: 3px;
 }
 
 .flex-container {
@@ -117,4 +130,8 @@ button.btn-custom:hover {
   padding: 10px;
   margin: 10px;
   text-align: center;
+}
+
+.card-img-overlay {
+  padding: .7rem;
 }

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField
-from wtforms.fields.html5 import DecimalRangeField
+from wtforms.fields.html5 import IntegerRangeField
 from wtforms.validators import DataRequired
 
 
@@ -36,8 +36,8 @@ class HouseForm(FlaskForm):
                      ('West End', 'West End'),
                      ('West Roxbury', 'West Roxbury')]
 
-    finished_sq_ft = DecimalRangeField('Square Foot', default=2500)
-    lot_size = DecimalRangeField('Lot Size', default=2500)
+    finished_sq_ft = IntegerRangeField('Square Foot', default=2500)
+    lot_size = IntegerRangeField('Lot Size', default=2500)
     bedroom = StringField('Beds', validators=[DataRequired()])
     bathroom = StringField('Baths', validators=[DataRequired()])
     total_room = StringField('Total Rooms', validators=[DataRequired()])
