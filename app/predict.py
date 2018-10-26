@@ -13,7 +13,7 @@ from app.helpers import getGroup
 
 
 def predict(data):
-    # create dictionary for input home features
+    # Create dictionary for input home features
     home_dict = {}
     print(data)
     cluster_group = getGroup(data['neighborhood'])
@@ -72,12 +72,15 @@ def predict(data):
     home_dict['age'] = 2018 - int(data['built_year'])
     home_dict['lot_finish'] = home_dict['lot_size'] / home_dict['finished_SqFt']
 
+    # Create DataFrame for home features
     home_df = pd.DataFrame(home_dict, index=[0])
 
+    # Get path of app directory
     path = os.path.abspath(os.path.dirname(__file__)) + '/data/'
     csv_name = 'all_types.csv'
     csv_path = path + csv_name
 
+    # Read home data file
     df = pd.read_csv(csv_path)
 
     X = df[['bathrooms', 'bedrooms', 'finished_SqFt', 'total_rooms',
@@ -89,17 +92,19 @@ def predict(data):
 
     X = pd.concat([X, group, home_type], axis=1)
 
+    # Run the model
     gbr = ensemble.GradientBoostingRegressor()
     model_gbr = gbr.fit(X, y)
 
     home_X = home_df[['bathrooms', 'bedrooms', 'finished_SqFt', 'total_rooms',
                       'finishedsqft_rooms', 'bed_bath', 'age', 'lot_size', 'lot_finish', 'high_price_high_freq', 'low_freq', 'low_price_high_freq', 'APARTMENT', 'CONDO', 'MULTI_FAMILY', 'SINGLE_FAMILY', 'TOWNHOUSE']]
 
+    # Predict
     prediction = model_gbr.predict(home_X)
 
     estimation = round(prediction[0], 2)
 
-    # get estimated finished squared feet 20% from user input
+    # Get similar features houses
     df = df[(df['finished_SqFt'] >= 0.8 * float(data['finished_sq_ft'])) &
             (df['finished_SqFt'] <= 1.2 * float(data['finished_sq_ft']))]
     # df = df[(df['bathrooms'] >= float(data['bathroom']) - 0.5) &
@@ -141,7 +146,8 @@ def predict(data):
     print(prices)
     print(dates)
     print(zpids)
-    # get picture by zpid
+
+    # Get picture by zpid
     pic_urls = []
     home_urls = []
 

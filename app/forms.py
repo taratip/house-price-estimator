@@ -3,6 +3,8 @@ from wtforms import StringField, SelectField, SubmitField
 from wtforms.fields.html5 import IntegerRangeField
 from wtforms.validators import DataRequired
 
+# Form for entering house features
+
 
 class HouseForm(FlaskForm):
     PROPERTY_TYPES = [('APARTMENT', 'Apartment'),

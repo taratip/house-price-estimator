@@ -1,3 +1,4 @@
+# Get property type
 def getPropertyType(arg):
     get_property_type = {
         'APARTMENT': 'Apartment',
@@ -8,6 +9,8 @@ def getPropertyType(arg):
     }
 
     return get_property_type.get(arg, "Invalid type")
+
+# Get cluster group based on neighborhood
 
 
 def getGroup(arg):
