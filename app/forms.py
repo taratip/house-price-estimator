@@ -5,7 +5,8 @@ from wtforms.validators import DataRequired
 
 
 class HouseForm(FlaskForm):
-    PROPERTY_TYPES = [('CONDO', 'Condo'),
+    PROPERTY_TYPES = [('APARTMENT', 'Apartment'),
+                      ('CONDO', 'Condo'),
                       ('MULTI_FAMILY', 'Multi-Family'),
                       ('SINGLE_FAMILY', 'Single-Family'),
                       ('TOWNHOUSE', 'Townhouse')]
@@ -24,6 +25,7 @@ class HouseForm(FlaskForm):
                      ('Hyde Park', 'Hyde Park'),
                      ('Jamaica Plain', 'Jamaica Plain'),
                      ('Kenmore', 'Kenmore'),
+                     ('Leather District', 'Leather District'),
                      ('Mattapan', 'Mattapan'),
                      ('Mission Hill', 'Mission Hill'),
                      ('North Dorchester', 'North Dorchester'),
@@ -34,7 +36,8 @@ class HouseForm(FlaskForm):
                      ('South Dorchester', 'South Dorchester'),
                      ('South End', 'South End'),
                      ('West End', 'West End'),
-                     ('West Roxbury', 'West Roxbury')]
+                     ('West Roxbury', 'West Roxbury'),
+                     ('Winthrop', 'Winthrop')]
 
     finished_sq_ft = IntegerRangeField('Square Foot', default=2500)
     lot_size = IntegerRangeField('Lot Size', default=2500)
