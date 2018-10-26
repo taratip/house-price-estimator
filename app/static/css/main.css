@@ -135,3 +135,7 @@ input#submit.btn.btn-block.btn-custom:hover {
 .card-img-overlay {
   padding: .7rem;
 }
+
+.card-img-top {
+  object-fit: cover;
+}
