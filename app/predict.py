@@ -1,9 +1,6 @@
 import numpy as np
 import pandas as pd
 import os
-import urllib
-import requests
-import xml.etree.ElementTree as ET
 
 from sklearn import ensemble
 from sklearn.ensemble import GradientBoostingRegressor
@@ -15,7 +12,7 @@ from app.helpers import getGroup
 def predict(data):
     # Create dictionary for input home features
     home_dict = {}
-    print(data)
+
     cluster_group = getGroup(data['neighborhood'])
 
     if cluster_group == 'low_freq':
@@ -104,87 +101,6 @@ def predict(data):
 
     estimation = round(prediction[0], 2)
 
-    # Get similar features houses
-    df = df[(df['finished_SqFt'] >= 0.8 * float(data['finished_sq_ft'])) &
-             (df['finished_SqFt'] <= 1.2 * float(data['finished_sq_ft']))]
-    df = df[(df['bathrooms'] >= floor(0.8 * float(data['bathroom'])))
-             & (df['bathrooms'] <= ceil(1.2 * data['bathroom']))]
-    df = df[(df['bedrooms'] >= floor(0, 8 * int(data['bedroom'])))
-             & (df['bedrooms'] <= ceil(1.2 * int(data['bedroom'])))]
-    df = df[df['total_rooms'] >= floor(0.8 * float(data['total_room']))) & (df['total_rooms'] <= ceil(1.2 * float(data['total_rooms'])))]
+    est_price = '{} M'.format(estimation)
 
-    # df = df[df['neighborhood'] == data['neighborhood']]
-    df=df[df['group'] == cluster_group]
-
-    df.sort_values(by = ['readable_date_sold'])
-
-    print(df[['group', 'bathrooms', 'bedrooms', 'neighborhood', 'total_rooms', 'finished_SqFt']])
-
-    if len(df.index) > 3:
-        loop_num=3
-    else:
-        loop_num=len(df.index)
-
-    addresses=[]
-    prices=[]
-    dates=[]
-    zpids=[]
-
-    for i in range(loop_num):
-        add=df.iloc[i, 2]
-        addresses.append(add)
-
-        price='Last sold price: ${} M'.format(str(df.iloc[i, 6]/1000000.0))
-        prices.append(price)
-
-        date='Sold on: {}'.format(df.iloc[i, 8])
-        dates.append(date)
-
-        zpid=df.iloc[i, -1]
-        zpids.append(zpid)
-
-    print(addresses)
-    print(prices)
-    print(dates)
-    print(zpids)
-
-    # Get picture by zpid
-    pic_urls=[]
-    home_urls=[]
-
-    # zillow_id=app.config['ZILLOW_API_KEY']
-    # url='http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?'
-    # tree=''
-    #
-    # for id in zpids:
-    #     zpid_data={'zws-id': zillow_id, 'zpid': id}
-    #     query_string=url + urllib.parse.urlencode(zpid_data)
-    #
-    #     response=requests.get(query_string)
-    #
-    #     msg=response.content
-    #     tree=ET.fromstring(msg)
-    #
-    #     code=tree.find('message/code')
-    #
-    #     if code.text == '0':
-    #         result=tree.find('response')
-    #
-    #         homeInfo=result.find('links/homeInfo')
-    #         images=result.find('images/image')
-    #
-    #         home_url=homeInfo.text if homeInfo is not None else None
-    #         pic_url=images[0].text if images[0] is not None else 'http://source.unsplash.com/daily'
-    #
-    #         home_urls.append(home_url)
-    #         pic_urls.append(pic_url)
-    #     else:
-    #         home_urls.append(None)
-    #         pic_urls.append('http://source.unsplash.com/daily')
-
-    est_price='{} M'.format(estimation)
-    result={
-        'estimation': est_price, 'home_dict': home_dict, 'addresses': addresses, 'pic_urls': pic_urls, 'home_urls': home_urls, 'prices': prices, 'dates': dates
-    }
-
-    return result
+    return est_price
