@@ -7,16 +7,16 @@ from app.predict import predict
 
 @app.route('/')
 def landing():
-    if session.get('features') == True:
-        session.pop('features', None)
+    # if session.get('features') == True:
+    #     session.pop('features', None)
 
     return render_template('landing.html', page='landing')
 
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    if session.get('features') == True:
-        session.pop('features', None)
+    # if session.get('features') == True:
+    #     session.pop('features', None)
 
     features = {}
     form = HouseForm(request.form)
@@ -40,16 +40,16 @@ def index():
                     'property_type': property_type,
                     'neighborhood': neighborhood}
 
-        session['features'] = features
+        # session['features'] = features
 
-        return redirect(url_for('estimate'))
+        return redirect(url_for('estimate', features=features))
 
     return render_template('index.html', page='home', form=form)
 
 
-@app.route('/estimate', methods=['GET', 'POST'])
+@app.route('/estimate/<features>', methods=['GET', 'POST'])
 def estimate():
-    features = session.get('features')
+    # features = session.get('features')
     result = predict(features)
 
     neighborhood = features['property_type']
