@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, url_for, redirect, flash, request, session
+from flask import render_template, url_for, redirect, request
 import ast
 
 from app.forms import HouseForm
