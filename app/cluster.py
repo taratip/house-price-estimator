@@ -28,8 +28,10 @@ def cluster(data):
     df = pd.read_csv(cluster_csv_path)
     df = df.drop(['Unnamed: 0'], axis=1)
 
+    # Scale features
     scale = StandardScaler()
-    df_std = scale.fit_transform(df)
+    scale.fit(df)
+    df_std = scale.transform(df)
 
     kmeans = KMeans(n_clusters=50)
     kmeans = kmeans.fit(df_std)
@@ -71,8 +73,10 @@ def cluster(data):
 
     user_df = pd.DataFrame(user_input, index=[0])
 
+    # Scale features from user input
+    scaled_user_df = scale.transform(user_df)
     # Get cluster for user input
-    user_cluster = kmeans.predict(user_df)
+    user_cluster = kmeans.predict(scaled_user_df)
     # Get distance from user input datapoint
     trans = kmeans.transform(df_std)
     # Sort distance
