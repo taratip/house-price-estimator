@@ -29,7 +29,7 @@ def cluster(data):
     df = df.drop(['Unnamed: 0'], axis=1)
 
     scale = StandardScaler()
-    df_std = scale.fit_transform(X)
+    df_std = scale.fit_transform(df)
 
     kmeans = KMeans(n_clusters=50)
     kmeans = kmeans.fit(df_std)
@@ -77,6 +77,7 @@ def cluster(data):
     trans = kmeans.transform(df_std)
     # Sort distance
     closest_points = []
+    argsor = np.argsort(trans[:, user_cluster[0]])
     for i, argsortidx in enumerate(argsor):
         if i == 3:
             break
@@ -127,7 +128,7 @@ def cluster(data):
             images = result.find('images/image')
 
             home_url = homeInfo.text if homeInfo is not None else None
-            pic_url = images[0].text if images[0] is not None else 'http://source.unsplash.com/daily'
+            pic_url = images[0].text if images is not None else 'http://source.unsplash.com/daily'
 
             home_urls.append(home_url)
             pic_urls.append(pic_url)
