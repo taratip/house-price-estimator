@@ -5,6 +5,7 @@ import urllib
 import requests
 import xml.etree.ElementTree as ET
 
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.cluster import KMeans
 from sklearn import metrics
@@ -27,9 +28,10 @@ def cluster(data):
     df = pd.read_csv(cluster_csv_path)
     df = df.drop(['Unnamed: 0'], axis=1)
 
-    df_std = stats.zscore(df)
+    scale = StandardScaler()
+    df_std = scale.fit_transform(X)
 
-    kmeans = KMeans(n_clusters=7)
+    kmeans = KMeans(n_clusters=50)
     kmeans = kmeans.fit(df_std)
     labels = kmeans.predict(df_std)
 
@@ -72,9 +74,13 @@ def cluster(data):
     # Get cluster for user input
     user_cluster = kmeans.predict(user_df)
     # Get distance from user input datapoint
-    trans = kmeans.transform(df_std)[:, user_cluster[0]]
+    trans = kmeans.transform(df_std)
     # Sort distance
-    inds = np.argsort(trans)[::]
+    closest_points = []
+    for i, argsortidx in enumerate(argsor):
+        if i == 3:
+            break
+        closest_points.append(argsortidx)
 
     zpids = []
     addresses = []
@@ -82,7 +88,7 @@ def cluster(data):
     sold_dates = []
 
     # Get index of the 3 shortest distance from user cluster
-    for i in inds[:3]:
+    for i in closest_points:
         zpid = all_df.loc[i, 'zpid']
         zpids.append(zpid)
 
@@ -137,6 +143,4 @@ def cluster(data):
         'pic_urls': pic_urls
     }
 
-    # result = {'addresses': ['45 Catherine St', '99 Day St', '279 Pond St'], 'prices': ['Last sold price: $0.15 M', 'Last sold price: $0.30 M', 'Last sold price: $1.28 M'], 'sold_dates': ['Sold on: 2016-01-14', 'Sold on: 2017-10-30', 'Sold on: 2018-07-20'], 'home_urls': [None,
-    #                                                                                                                                                                                                                                                                            'https://www.zillow.com/homedetails/99-Day-St-Boston-MA-02130/59131717_zpid/', 'https://www.zillow.com/homedetails/279-Pond-St-Boston-MA-02130/59134658_zpid/'], 'pic_urls': ['http://source.unsplash.com/daily', 'https://photos.zillowstatic.com/p_d/ISd8j8evssk6081000000000.jpg', 'https://photos.zillowstatic.com/p_d/IS99x838ispaqg0000000000.jpg']}
     return result
