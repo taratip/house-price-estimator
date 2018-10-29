@@ -13,6 +13,7 @@ from scipy import stats
 from scipy.spatial.distance import cdist
 
 from app import app
+from app.helpers import abbrNumber
 
 
 def cluster(data):
@@ -100,7 +101,7 @@ def cluster(data):
         add = all_df.loc[i, 'address']
         addresses.append(add)
 
-        price = 'Last sold price: ${0:.2f} M'.format(all_df.loc[i, 'price']/1000000.0)
+        price = 'Last sold price: $' + abbrNumber(all_df.loc[i, 'price'])
         prices.append(price)
 
         sold_date = 'Sold on: {}'.format(all_df.loc[i, 'readable_date_sold'])

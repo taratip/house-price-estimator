@@ -1,4 +1,8 @@
+import math
+
 # Get property type
+
+
 def getPropertyType(arg):
     get_property_type = {
         'APARTMENT': 'Apartment',
@@ -31,3 +35,23 @@ def getGroup(arg):
             group = v
 
     return group
+
+
+def abbrNumber(number):
+    SI_SYMBOL = ['', 'k', 'M']
+    # what tier? (determines SI symbol)
+    tier = math.log10(number) // 3
+
+    # if zero, we don't need a suffix
+    if(tier == 0):
+        return "{}".format(number)
+
+    # get suffix and determine scale
+    suffix = SI_SYMBOL[int(tier)]
+    scale = math.pow(10, tier * 3)
+
+    # scale the number
+    scaled = number / scale
+
+    # format number and add suffix
+    return "{:.2f} {}".format(scaled, suffix)
