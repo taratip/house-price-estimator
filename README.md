@@ -52,7 +52,7 @@ After training all models, I created a web application to get an input from user
 the final model which is Gradient Boosting Regression. The K-means Clustering is used to get previously sold houses with similar features based on input.
 The web application also sends API request to Zillow to get information of these three similar houses.
 
-The code can be found at [https://github.com/taratip/house-price-estimator](https://github.com/taratip/house-price-estimator)
+The code can be found at [https://github.com/taratip/house-price-estimator](https://github.com/taratip/house-price-estimator). The web can be accessed at https://house-price-estimator-tj.herokuapp.com/
 
 ## Future
 It is obvious that the model I chose did not give accurate prediction as the dataset I have is too few for machine learning. Some of important features 
